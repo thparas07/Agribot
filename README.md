@@ -1,4 +1,4 @@
-# End-to-end-Medical-Chatbot-Generative-AI
+
 
 
 # How to run?
@@ -16,7 +16,7 @@ conda create -n medibot python=3.10 -y
 ```
 
 ```bash
-conda activate medibot
+conda activate Agribot
 ```
 
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ```ini
 PINECONE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+google_api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
 
@@ -92,7 +92,8 @@ open up localhost:
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 970547337635.dkr.ecr.ap-south-1.amazonaws.com/medicalchatbot
+    - Save the URI: 970547337635.dkr.ecr.ap-south-1.amazonaws.com/Agri
+    chatbot
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
@@ -127,6 +128,6 @@ open up localhost:
    - AWS_DEFAULT_REGION
    - ECR_REPO
    - PINECONE_API_KEY
-   - OPENAI_API_KEY
+   - google_api_key
 
     
