@@ -6,12 +6,30 @@ body,html{
 	background: linear-gradient(to right, rgb(38, 51, 61), rgb(50, 55, 65), rgb(33, 33, 78));
 }
 
+ .language-select {
+            margin-top: 10px;
+	 		background: rgb(0,0,0,0)
+        }
+
+        @media (max-width: 768px) {
+            .language-select {
+                margin-top: 5px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-height: 500px) { /* Adjust for very short screens */
+             .language-select {
+                margin-top: 2px;
+             }
+        }
+
 .chat{
 	margin-top: auto;
 	margin-bottom: auto;
 }
 .card{
-	height: 500px;
+	height: 700px;
 	border-radius: 15px !important;
 	background-color: rgba(0,0,0,0.4) !important;
 }

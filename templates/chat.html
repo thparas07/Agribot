@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
 
-    <!-- Bootstrap & FontAwesome -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>
 
 </head>
@@ -20,14 +18,23 @@
                 <div class="card">
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
-                            <div class="img_cont">
-                                <img src="/Users/parasthakur/Downloads/End-to-end-Medical-Chatbot-Generative-AI/PHOTO-2025-03-27-00-08-36.jpg" class="rounded-circle user_img">
-                                <span class="online_icon"></span>
-                            </div>
+                                <div class="img_cont">
+                                    <img src="{{ url_for('static', filename='farm-circle-logo-vector-illustration.jpg') }}" class="rounded-circle user_img" alt="Agribot Logo">
+                                    <span class="online_icon"></span>
+                                </div>
                             <div class="user_info">
                                 <span>AGRIBOT</span>
                                 <p>Ask me anything!</p>
                             </div>
+                        </div>
+                        <div class="language-select">
+                            <select id="languageSelect" class="form-control">
+                                <option value="en-US">English (US)</option>
+                                <option value="mr-IN">Marathi (India)</option>
+                                <option value="hi-IN">Hindi (India)</option>
+                                <option value="te-IN">Telugu (India)</option>
+                                <option value="ta-IN">Tamil (India)</option>
+                            </select>
                         </div>
                     </div>
                     <div id="messageFormeight" class="card-body msg_card_body"></div>
@@ -45,12 +52,12 @@
         </div>
     </div>
 
-    <!-- jQuery & Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <!-- Custom JavaScript -->
     <script src="static/script.js"></script>
+
+
 
 </body>
 </html>

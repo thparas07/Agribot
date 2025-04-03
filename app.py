@@ -41,9 +41,25 @@ prompt = ChatPromptTemplate.from_messages(
 
 # Gemini model setup
 def query_gemini(input_text):
+    # List of agriculture-related keywords (you can expand this list)
+    agriculture_keywords = [
+        "crop", "farming", "soil", "irrigation", "pesticide", "fertilizer",
+        "harvest", "weather", "agriculture", "yield", "seeds", "greenhouse",
+        "organic", "pest control", "disease", "farmer", "livestock", "drought","weather"
+    ]
+
+    # Convert input to lowercase for case-insensitive matching
+    input_lower = input_text.lower()
+
+    # Check if at least one agriculture-related keyword is present
+    if not any(keyword in input_lower for keyword in agriculture_keywords):
+        return "Sorry, I can only answer questions related to agriculture."
+
+    # Proceed with Gemini API if input is valid
     model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(input_text)
     return response.text if response else "Sorry, I couldn't process that request."
+
 
 # Retrieval-Augmented Generation (RAG) Chain
 def generate_response(user_input):
