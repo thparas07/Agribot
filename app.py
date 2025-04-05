@@ -45,7 +45,7 @@ def query_gemini(input_text):
     agriculture_keywords = [
         "crop", "farming", "soil", "irrigation", "pesticide", "fertilizer",
         "harvest", "weather", "agriculture", "yield", "seeds", "greenhouse",
-        "organic", "pest control", "disease", "farmer", "livestock", "drought","weather"
+        "organic", "pest control", "disease", "farmer", "livestock", "drought","weather","grow","pen","sugarcane",""
     ]
 
     # Convert input to lowercase for case-insensitive matching
