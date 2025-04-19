@@ -28,6 +28,7 @@ $(document).ready(function() {
         $.ajax({
             data: { msg: rawText },
             type: "POST",
+
             url: "/get", // Ensure this endpoint exists on your server
         }).done(function(data) {
             const botMessage = { sender: 'bot', text: data };

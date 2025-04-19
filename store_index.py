@@ -1,8 +1,7 @@
-from src.helper import load_pdf_file, text_split
+from src.helper import load_pdf_file, text_split, download_hugging_face_embeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
-from langchain_core.documents import Document
 from dotenv import load_dotenv
 import os
 
@@ -19,14 +18,14 @@ if not PINECONE_API_KEY:
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
 # Define index name
-index_name = "farmerbot18"
+index_name = "farmerbot12"
 
 # Check if index exists before creating it
 if index_name not in [index["name"] for index in pc.list_indexes()]:
     print("🟢 Creating new Pinecone index...")
     pc.create_index(
         name=index_name,
-        dimension=384,  # Ensure it matches your embedding model
+        dimension=384,  # Make sure this matches your embedding model
         metric="cosine",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
@@ -37,24 +36,13 @@ else:
 extracted_data = load_pdf_file(data="Data/")
 text_chunks = text_split(extracted_data)
 
-# ✅ Ensure text_chunks are strings, not Document objects
-if isinstance(text_chunks[0], Document):
-    text_chunks = [chunk.page_content for chunk in text_chunks]
-
-# ✅ Define `documents` properly before use
-documents = [
-    Document(page_content=chunk, metadata={"text": chunk}) for chunk in text_chunks
-]
-
 # Download embeddings model
-embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-)
+embeddings = download_hugging_face_embeddings()
 
-# ✅ Upload documents to Pinecone
+# Upsert embeddings into Pinecone
 print("🔄 Uploading documents to Pinecone...")
 docsearch = PineconeVectorStore.from_documents(
-    documents=documents,  # Now properly defined
+    documents=text_chunks,
     index_name=index_name,
     embedding=embeddings,
 )

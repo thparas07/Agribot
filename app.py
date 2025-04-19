@@ -63,11 +63,7 @@ def query_gemini(input_text):
 
 # Retrieval-Augmented Generation (RAG) Chain
 def generate_response(user_input):
-    relevant_docs = retriever.invoke(user_input)  # Pass onl the string
-
-    doc_texts = "\n".join([doc.page_content for doc in relevant_docs])
-    final_input = f"{doc_texts}\n\nUser: {user_input}\nAI:"
-    return query_gemini(final_input)
+    return query_gemini(user_input)
 
 # Routes
 @app.route("/")
